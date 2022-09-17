@@ -17,8 +17,10 @@ export default function App() {
   }
 
 
-  function deleteGoalHandler(){
-    console.log('delete')
+  function deleteGoalHandler(id){
+   setGoal(currentGoal=>{
+    return currentGoal.filter((goal)=>goal.id !== id)
+   })
   }
 
   return (
@@ -28,7 +30,7 @@ export default function App() {
         <FlatList
           data={goal}
           renderItem={(itemData) => {
-            return <GoalItem itemData={itemData} deleteGoalHandler={deleteGoalHandler} />;
+            return <GoalItem itemData={itemData} deleteGoalHandler={deleteGoalHandler}  />;
           }}
           keyExtractor={(item, index) => {
             return item.id;
